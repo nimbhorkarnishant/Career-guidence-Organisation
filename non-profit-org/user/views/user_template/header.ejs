@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title><%= title%></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="" />
+<!-- css -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="<%= css_file3%>" rel="stylesheet" />
+<link href="<%= css_file2%>" rel="stylesheet">
+<link href="<%= css_file1%>" rel="stylesheet" />
+<link href="<%= css_main%>" rel="stylesheet" />
+
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+<div id="wrapper" class="home-page">
+	<header class="topbar">
+		<div class="container">
+			<div class="row">
+				<!-- social icon-->
+				<div class="col-sm-3">
+				   <ul class="social-network">
+					<li><a class="waves-effect waves-dark" href="#"><i class="fa fa-facebook"></i></a></li>
+					<li><a class="waves-effect waves-dark" href="#"><i class="fa fa-twitter"></i></a></li>
+					<li><a class="waves-effect waves-dark" href="#"><i class="fa fa-linkedin"></i></a></li>
+					<li><a class="waves-effect waves-dark" href="#"><i class="fa fa-pinterest"></i></a></li>
+					<li><a class="waves-effect waves-dark" href="#"><i class="fa fa-google-plus"></i></a></li>
+				</ul>
+				</div>
+				<div class="col-sm-9">
+					<div class="row">
+						<ul class="info">
+							<li><i class="icon-info-blocks material-icons">question_answer</i><span>info@active.com</span></li>
+							<li><i class="icon-info-blocks material-icons">perm_phone_msg</i><span>+(012) 345 6789</span></li>
+						</ul>
+						<div class="clr"></div>
+					</div>
+				</div>
+				<!-- info -->
+
+			</div>
+		</div>
+	</header>
+
+	<!-- start header -->
+	<header>
+        <div class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/"><i class="icon-info-blocks material-icons">account_balance</i>LEARN<strong>CESS</strong></a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav" id="menu_bar">
+                        <li class="active"><a class="waves-effect waves-dark" href="/">Home</a></li>
+						 						<li ><a class="waves-effect waves-dark" href="/login" >Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+	</header>
+	<div class="" id="message_box_alert"></div>
+ <script type="text/javascript">
+ window.onload = function() {
+	// alert("<%= user_status%>");
+	var data=document.getElementById("message_box_alert");
+ 	 if ("<%= user_status%>"=="login") {
+		 var st='';
+			st+='<li class="active"><a class="waves-effect waves-dark" href="/">Home</a></li>'+
+			'<li class="dropdown">'+
+				'<a href="#" data-toggle="dropdown" class="dropdown-toggle waves-effect waves-dark">More Option<b class="caret"></b></a>'+
+				'<ul class="dropdown-menu">'+
+					'<li><a class="waves-effect waves-dark" href="" id="volunter">Be a volunter</a></li>'+
+					'<li><a class="waves-effect waves-dark" href="" id="club_request"> Make club Request</a></li>'+
+				'</ul>'+
+			'</li>'+
+			'</li><li ><a class="waves-effect waves-dark" href="/logout" >Logout</a></li>';
+		 	console.log(document.getElementById('menu_bar').innerHTML);
+			document.getElementById('menu_bar').innerHTML=st;
+		}
+ 	if ("<%= message_dict.message %>".length!=0) {
+ 		if ("<%= message_dict.page %>"=="home") {
+ 		//	alert("<%= message_dict.message %>");
+ 			data.innerHtml='<div class="alert alert-success alert-dismissible" style="margin-bottom:80px;">'+
+ 			'<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+
+ 			'<b><%= message_dict.message %>.</b></div>';
+ 		}
+ 		else {
+ 			data.innerHtml='<div class="alert alert-success alert-dismissible">'+
+ 			'<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+
+ 			'<b><%= message_dict.message %>.</b></div>';
+
+ 		}
+ 	}
+ 	else {
+
+ 	}
+		}
+ </script>
+	<!-- end header -->
