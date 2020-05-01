@@ -11,6 +11,9 @@
 <link href="<%= css_file2%>" rel="stylesheet">
 <link href="<%= css_file1%>" rel="stylesheet" />
 <link href="<%= css_main%>" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -72,7 +75,8 @@
 	<div class="" id="message_box_alert"></div>
  <script type="text/javascript">
  window.onload = function() {
-	// alert("<%= user_status%>");
+//	alert("<%= user_status%>");
+//alert("<%= message_dict.message_data%>")
 	var data=document.getElementById("message_box_alert");
  	 if ("<%= user_status%>"=="login") {
 		 var st='';
@@ -80,7 +84,7 @@
 			'<li class="dropdown">'+
 				'<a href="#" data-toggle="dropdown" class="dropdown-toggle waves-effect waves-dark">More Option<b class="caret"></b></a>'+
 				'<ul class="dropdown-menu">'+
-					'<li><a class="waves-effect waves-dark" href="" id="volunter">Be a volunter</a></li>'+
+					'<li><a class="waves-effect waves-dark" href="/register_for_volunteer" id="volunter">Be a volunter</a></li>'+
 					'<li><a class="waves-effect waves-dark" href="" id="club_request"> Make club Request</a></li>'+
 				'</ul>'+
 			'</li>'+
@@ -88,17 +92,18 @@
 		 	console.log(document.getElementById('menu_bar').innerHTML);
 			document.getElementById('menu_bar').innerHTML=st;
 		}
- 	if ("<%= message_dict.message %>".length!=0) {
+ 	if ("<%= message_dict.message_data%>".length!=0) {
+	//	alert("hello");
  		if ("<%= message_dict.page %>"=="home") {
  		//	alert("<%= message_dict.message %>");
- 			data.innerHtml='<div class="alert alert-success alert-dismissible" style="margin-bottom:80px;">'+
+ 			data.innerHTML='<div class="alert alert-success alert-dismissible" style="margin-bottom:80px;" role="alert">'+
  			'<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+
- 			'<b><%= message_dict.message %>.</b></div>';
+ 			'<b><%= message_dict.message_data %>.</b></div>';
  		}
  		else {
- 			data.innerHtml='<div class="alert alert-success alert-dismissible">'+
+ 			data.innerHTML='<div class="alert alert-success alert-dismissible" role="alert">'+
  			'<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+
- 			'<b><%= message_dict.message %>.</b></div>';
+ 			'<b><%= message_dict.message_data %>.</b></div>';
 
  		}
  	}
@@ -106,5 +111,11 @@
 
  	}
 		}
+
+	window.setTimeout(function() {
+	    $(".alert").fadeTo(500, 0).slideUp(500, function(){
+	        $(this).remove();
+	    });
+	}, 3000);
  </script>
 	<!-- end header -->

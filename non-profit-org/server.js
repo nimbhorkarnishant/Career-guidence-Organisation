@@ -1,8 +1,11 @@
 const express =require('express')
 const user_router=require('./user/routes/user_router')
+
+
 const mongoose=require('mongoose')
 const app=express()
 const path=require('path');
+var flash = require('connect-flash');
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
 app.use(cookieParser());
@@ -22,7 +25,10 @@ app.set('view engine','ejs')
 app.set('views', path.join(__dirname, './user/views'));
 app.use(express.static(__dirname + '/user/views/static'));
 app.use(express.urlencoded({ extended: false }))
+app.use(flash());
+
 app.use("/",user_router)
+
 
 // app.get('/new',function(req,res){
 //   if(req.session.page_views){
