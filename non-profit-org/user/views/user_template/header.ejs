@@ -11,8 +11,8 @@
 <link href="<%= css_file2%>" rel="stylesheet">
 <link href="<%= css_file1%>" rel="stylesheet" />
 <link href="<%= css_main%>" rel="stylesheet" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+
+
 
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -85,11 +85,11 @@
 				'<a href="#" data-toggle="dropdown" class="dropdown-toggle waves-effect waves-dark">More Option<b class="caret"></b></a>'+
 				'<ul class="dropdown-menu">'+
 					'<li><a class="waves-effect waves-dark" href="/register_for_volunteer" id="volunter">Be a volunter</a></li>'+
-					'<li><a class="waves-effect waves-dark" href="" id="club_request"> Make club Request</a></li>'+
+					'<li><a class="waves-effect waves-dark" href="/Invite_for_club" id="club_request">Invite for club </a></li>'+
 				'</ul>'+
 			'</li>'+
 			'</li><li ><a class="waves-effect waves-dark" href="/logout" >Logout</a></li>';
-		 	console.log(document.getElementById('menu_bar').innerHTML);
+		 	//console.log(document.getElementById('menu_bar').innerHTML);
 			document.getElementById('menu_bar').innerHTML=st;
 		}
  	if ("<%= message_dict.message_data%>".length!=0) {

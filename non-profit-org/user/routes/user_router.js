@@ -25,26 +25,26 @@ router.get('/',async (req,res) =>{
     user_status:user_status,
   })
 })
-router.get('/register_for_volunteer',async (req,res) =>{
-  var user_status="";
-  if (req.session.user_detail) {
-    user_status="login";
-    var message_data=req.flash("message");
-    res.render('user_template/volunteer_form',
-    { title: 'Learncess|be volunteer',css_main:'css/home.css',
-      css_file1:'css/util.css',
-      css_file2:'css/volunteer_css.css',
-      css_file3:'css/bootstrap.min.css',
-      message_dict:{"page":"",message_data},
-      user_status:user_status,
-    })
-  }
-  else {
-    req.flash("message","You have to login for this Feature!");
-    res.redirect('/login');
-  }
-
-})
+// router.get('/register_for_volunteer',async (req,res) =>{
+//   var user_status="";
+//   if (req.session.user_detail) {
+//     user_status="login";
+//     var message_data=req.flash("message");
+//     res.render('user_template/volunteer_form',
+//     { title: 'Learncess|be volunteer',css_main:'css/home.css',
+//       css_file1:'css/util.css',
+//       css_file2:'css/volunteer_css.css',
+//       css_file3:'css/bootstrap.min.css',
+//       message_dict:{"page":"",message_data},
+//       user_status:user_status,
+//     })
+//   }
+//   else {
+//     req.flash("message","You have to login for this Feature!");
+//     res.redirect('/login');
+//   }
+//
+// })
 
 router.get('/login',async (req,res) =>{
   var user_status="";

@@ -1,0 +1,128 @@
+<%- include('header') %>
+
+<div class="container-contact100">
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form" method="post" action="/Inviting_for_club">
+				<span class="contact100-form-title">
+          Invite Us For Club
+				</span>
+
+        <div class="wrap-input100 validate-input" data-validate="Name is required">
+					<span class="label-input100"> School Name</span>
+					<input class="input100" type="text" name="school_name" placeholder="Enter School name" required>
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					<span class="label-input100">School Email Id</span>
+					<input class="input100" type="email" name="school_email" placeholder="Enter School email Id" required>
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					<span class="label-input100">School Address</span>
+					<input class="input100" type="text" name="school_address" placeholder="Enter School Address" required>
+					<span class="focus-input100"></span>
+				</div>
+        <div class="wrap-input100 input100-select">
+          <span class="label-input100">State of school</span>
+          <div>
+            <select class="selection-2" name="state_school" id="state_dropdown" onchange="select_city()" required>
+              <option value="None">Select State</option>
+            </select>
+          </div>
+          <span class="focus-input100"></span>
+        </div>
+        <div class="wrap-input100 input100-select">
+          <span class="label-input100">City of School</span>
+          <div>
+            <select class="selection-2" name="city_school" id="city_dropdown" required>
+              <option value="None">Select City</option>
+            </select>
+          </div>
+          <span class="focus-input100"></span>
+        </div>
+
+				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					<span class="label-input100">School Website (Optional)</span>
+					<input class="input100" type="url" name="school_website" placeholder="if you have website then only mentioned">
+					<span class="focus-input100"></span>
+				</div>
+        <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					<span class="label-input100">School Area Pin Code </span>
+					<input class="input100" type="text" name="pin_code" placeholder="Enter School Area pin code" required>
+					<span class="focus-input100"></span>
+				</div>
+        <div class="wrap-input100 validate-input" data-validate="Name is required">
+  					<span class="label-input100"> School Co-ordinator Full Name</span>
+  					<input class="input100" type="text" name="school_cordi_name" placeholder="Enter School Cordinator name" required>
+  					<span class="focus-input100"></span>
+  				</div>
+          <div class="wrap-input100 validate-input" data-validate="Name is required">
+            <span class="label-input100"> School Co-ordinator Email Id</span>
+            <input class="input100" type="email" name="school_cordi_email_id" placeholder="Enter School Cordinator email id" required>
+            <span class="focus-input100"></span>
+          </div>
+          <div class="wrap-input100 validate-input" data-validate="Name is required">
+            <span class="label-input100"> School Co-ordinator Phone Number</span>
+            <input class="input100" type="text" name="school_cordi_phone_no" placeholder="Enter School Cordinator Phone Number" required>
+            <span class="focus-input100"></span>
+          </div>
+
+				<div class="container-contact100-form-btn">
+					<div class="wrap-contact100-form-btn">
+						<div class="contact100-form-bgbtn"></div>
+						<button class="contact100-form-btn" type="submit">
+							<span>
+								Invite us
+								<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+							</span>
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div id="dropDownSelect1"></div>
+
+<!--===============================================================================================-->
+<script src="jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!--===============================================================================================-->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+
+<!--===============================================================================================-->
+<script>
+	$(".selection-2").select2({
+		minimumResultsForSearch: 20,
+		dropdownParent: $('#dropDownSelect1')
+	});
+</script>
+<script src="js/main.js"></script>
+
+<script type="text/javascript">
+	var state_array=['Maharashtra','Kerala'];
+	var st='';
+	for (var i = 0; i < state_array.length; i++) {
+		st+="<option value="+state_array[i]+">"+state_array[i]+"</option>";
+	};
+	document.getElementById("state_dropdown").innerHTML +=st;
+
+	function select_city() {
+		var stateObject = {
+				"India": { "Maharashtra": ["Pune", "Mumbai","Nagpur","Amravati"],
+										"Kerala": ["Thiruvananthapuram", "Palakkad"],
+								},
+		}
+		var city_array=stateObject["India"];
+		var state = document.getElementById("state_dropdown").value;
+		var string='<option value="None">Select City</option>';
+		for (var i = 0; i < city_array[state].length; i++) {
+			city_array[state][i]
+			string+="<option value="+city_array[state][i]+">"+city_array[state][i]+"</option>";
+		}
+		document.getElementById("city_dropdown").innerHTML=string;
+	};
+</script>
+
+<%- include('footer') %>

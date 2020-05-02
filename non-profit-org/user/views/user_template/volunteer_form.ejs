@@ -1,60 +1,87 @@
 <%- include('header') %>
 <div class="container-contact100">
 		<div class="wrap-contact100">
-			<form class="contact100-form validate-form">
+			<form class="contact100-form validate-form" action="/registering_for_volunteer" method="post" enctype="multipart/form-data">
 				<span class="contact100-form-title">
-					Say Hello!
+					Be volunteer
 				</span>
 
 				<div class="wrap-input100 validate-input" data-validate="Name is required">
-					<span class="label-input100">Your Name</span>
-					<input class="input100" type="text" name="name" placeholder="Enter your name">
+					<span class="label-input100"> First Name</span>
+					<input class="input100" value="<%= user_detail.first_name%>" type="text" name="first_name" placeholder="Enter your First name" required>
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate="Name is required">
+					<span class="label-input100"> Last Name</span>
+					<input class="input100" value="<%= user_detail.last_name%>" type="text" name="last_name" placeholder="Enter your Last name" required>
 					<span class="focus-input100"></span>
 				</div>
 
 				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 					<span class="label-input100">Email</span>
-					<input class="input100" type="text" name="email" placeholder="Enter your email addess">
+					<input class="input100" value="<%= user_detail.email_id%>" type="text" name="email_d" placeholder="Enter your email addess" required>
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					<span class="label-input100">Your cuurent Profession</span>
+					<input class="input100" type="text" name="profession" placeholder="e.g Student,Engineer doing job at this xyz company" required>
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					<span class="label-input100">Current Address</span>
+					<input class="input100" type="text" name="address" placeholder="Enter your current Address" required>
 					<span class="focus-input100"></span>
 				</div>
 
 				<div class="wrap-input100 input100-select">
-					<span class="label-input100">Needed Services</span>
+					<span class="label-input100">Current State</span>
 					<div>
-						<select class="selection-2" name="service">
-							<option>Choose Services</option>
-							<option>Online Store</option>
-							<option>eCommerce Bussiness</option>
-							<option>UI/UX Design</option>
-							<option>Online Services</option>
+						<select class="selection-2" name="current_state" id="state_dropdown" onchange="select_city()" required>
+							<option value="None">Select State </option>
 						</select>
 					</div>
 					<span class="focus-input100"></span>
 				</div>
-
 				<div class="wrap-input100 input100-select">
-					<span class="label-input100">Budget</span>
+					<span class="label-input100">Current City</span>
 					<div>
-						<select class="selection-2" name="budget">
-							<option>Select Budget</option>
-							<option>1500 $</option>
-							<option>2000 $</option>
-							<option>2500 $</option>
+						<select class="selection-2" name="current_city" id="city_dropdown" required>
+							<option>Select City</option>
 						</select>
 					</div>
 					<span class="focus-input100"></span>
 				</div>
-
+				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					<span class="label-input100">Your Current Residental Pincode</span>
+					<input class="input100" type="text" name="pincode" placeholder="Enter your current residental area pincode" required>
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					<span class="label-input100">Linkdin Url</span>
+					<input class="input100" type="url" name="url" placeholder="Enter your Linkdin URL" required>
+					<span class="focus-input100"></span>
+				</div>
+				<div class="input-group">
+			  <div class="input-group-prepend">
+			    <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+			  </div>
+			  <div class="custom-file">
+			    <input type="file" class="custom-file-input" id="inputGroupFile01"
+			      aria-describedby="inputGroupFileAddon01" name="resume_file" required>
+			    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+			  </div>
+			</div>
 				<div class="wrap-input100 validate-input" data-validate = "Message is required">
-					<span class="label-input100">Message</span>
-					<textarea class="input100" name="message" placeholder="Your message here..."></textarea>
+					<span class="label-input100">Description</span>
+					<textarea class="input100" name="description" placeholder="Describe Why you wnat to join us..." required></textarea>
 					<span class="focus-input100"></span>
 				</div>
 
 				<div class="container-contact100-form-btn">
 					<div class="wrap-contact100-form-btn">
 						<div class="contact100-form-bgbtn"></div>
-						<button class="contact100-form-btn">
+						<button class="contact100-form-btn" type="submit">
 							<span>
 								Submit
 								<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
@@ -73,7 +100,7 @@
 <!--===============================================================================================-->
 <script src="bootstrap.min.js"></script>
 <!--===============================================================================================-->
-<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script> -->
 
 <!--===============================================================================================-->
 <script>
@@ -83,6 +110,32 @@
 	});
 </script>
 <script src="js/main.js"></script>
+
+
+<script type="text/javascript">
+	var state_array=['Maharashtra','Kerala'];
+	var st='';
+	for (var i = 0; i < state_array.length; i++) {
+		st+="<option value="+state_array[i]+">"+state_array[i]+"</option>";
+	};
+	document.getElementById("state_dropdown").innerHTML +=st;
+
+	function select_city() {
+		var stateObject = {
+				"India": { "Maharashtra": ["Pune", "Mumbai","Nagpur","Amravati"],
+										"Kerala": ["Thiruvananthapuram", "Palakkad"],
+								},
+		}
+		var city_array=stateObject["India"];
+		var state = document.getElementById("state_dropdown").value;
+		var string='<option value="None">Select City</option>';
+		for (var i = 0; i < city_array[state].length; i++) {
+			city_array[state][i]
+			string+="<option value="+city_array[state][i]+">"+city_array[state][i]+"</option>";
+		}
+		document.getElementById("city_dropdown").innerHTML=string;
+	};
+</script>
 
 
 <%- include('footer') %>
