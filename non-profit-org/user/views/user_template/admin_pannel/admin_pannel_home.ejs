@@ -1,0 +1,215 @@
+<%- include('admin_header') %>
+<div class="page-wrapper">
+  <div class="page-breadcrumb">
+    <div class="row align-items-center">
+        <div class="col-5">
+            <h4 class="page-title">Dashboard</h4>
+            <div class="d-flex align-items-center">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Visit Website</a></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+  </div>
+          <div class="container-fluid">
+              <!-- ============================================================== -->
+              <!-- Sales chart -->
+              <!-- ============================================================== -->
+               <div class="row">
+                  <div class="col-md-8">
+                      <div class="card">
+                          <div class="card-body">
+                              <div class="d-md-flex align-items-center">
+                                  <div>
+                                      <h4 class="card-title">Organisation Summary</h4>
+                                      <h5 class="card-subtitle">Overview of Oragnization Detail</h5>
+                                  </div>
+                              </div>
+                                <div class="row">
+                                  <div class="col-md-6 mb-4">
+                                    <div class="card gradient-card">
+                                      <div class="card-image" style="background-image: url(https://cdn.pixabay.com/photo/2016/04/15/18/05/computer-1331579__340.png)">
+                                        <div class="text-white d-flex h-100 mask blue-gradient-rgba" style="background-color:#0c4aea75">
+                                          <div class="first-content align-self-center p-3">
+                                            <h3 class="card-title">Total Users</h3>
+                                            <p class="lead mb-0"><%= user.length%></p>
+                                          </div>
+                                          <div class="second-content align-self-center mx-auto text-center">
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                  <div class="card gradient-card">
+                                    <div class="card-image" style="background-image: url(https://cdn.pixabay.com/photo/2017/02/10/12/03/volunteer-2055010_1280.png)">
+                                      <div class="text-white d-flex h-100 mask purple-gradient-rgba" style="background-color:#ff0579ba">
+                                        <div class="first-content align-self-center p-3">
+                                          <h3 class="card-title">Total Volunteer</h3>
+                                          <p class="lead mb-0"><%= volunteer.length%></p>
+                                        </div>
+                                        <div class="second-content  align-self-center mx-auto text-center">
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                  <div class="card gradient-card">
+                                    <div class="card-image" style="background-image: url(https://image.shutterstock.com/image-illustration/open-book-classroom-blackboard-school-600w-1124973278.jpg);">
+                                      <div class="text-white d-flex h-100 mask peach-gradient-rgba" style="background-color:#28e3e3c4">
+                                        <div class="first-content align-self-center p-3">
+                                          <h3 class="card-title">Total Clubs</h3>
+                                          <p class="lead mb-0"><%= club.length%></p>
+                                        </div>
+                                        <div class="second-content  align-self-center mx-auto text-center">
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                  <div class="card gradient-card">
+                                    <div class="card-image" style="background-image: url(https://cdn.pixabay.com/photo/2017/06/26/15/46/help-2444110_1280.png);">
+                                      <div class="text-white d-flex h-100 mask aqua-gradient-rgba" style="background-color:#269d60d9">
+                                        <div class="first-content align-self-center p-3">
+                                          <h3 class="card-title">Total Mentor Requests</h3>
+                                          <p class="lead mb-0">5</p>
+                                        </div>
+                                        <div class="second-content  align-self-center mx-auto text-center">
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-4">
+                      <div class="card">
+                          <div class="card-body">
+                              <h4 class="card-title">Feeds</h4>
+                              <div class="feed-widget">
+                                  <ul class="list-style-none feed-body m-0 p-b-20">
+                                      <li class="feed-item">
+                                          <div class="feed-icon bg-info"><i class="far fa-bell"></i></div> You have 4 pending tasks. <span class="ml-auto font-12 text-muted">Just Now</span></li>
+                                      <li class="feed-item">
+                                          <div class="feed-icon bg-success"><i class="ti-server"></i></div> Server #1 overloaded.<span class="ml-auto font-12 text-muted">2 Hours ago</span></li>
+                                      <li class="feed-item">
+                                          <div class="feed-icon bg-warning"><i class="ti-shopping-cart"></i></div> New order received.<span class="ml-auto font-12 text-muted">31 May</span></li>
+                                      <li class="feed-item">
+                                          <div class="feed-icon bg-danger"><i class="ti-user"></i></div> New user registered.<span class="ml-auto font-12 text-muted">30 May</span></li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="row">
+                  <!-- column -->
+                  <div class="col-12">
+                      <div class="card">
+                          <div class="card-body">
+                              <!-- title -->
+                              <div class="d-md-flex align-items-center">
+                                  <div>
+                                      <h4 class="card-title">Volunteer Requests</h4>
+                                      <h5 class="card-subtitle">Unreview Application Of Volunteer </h5>
+                                  </div>
+                              </div>
+                              <!-- title -->
+                          </div>
+                          <div class="table-responsive">
+                              <table class="table v-middle">
+                                  <thead>
+                                      <tr class="bg-light">
+                                          <th class="border-top-0">Volunteer Name</th>
+                                          <th class="border-top-0">Email-id</th>
+                                          <th class="border-top-0"></th>
+                                      </tr>
+                                  </thead>
+                                  <% for (var i=0; i< volunteer.length; i++) {%>
+                                    <% if(volunteer[i].review_done=="false") {%>
+                                  <tbody>
+                                      <tr>
+                                          <td>
+                                              <div class="d-flex align-items-center">
+                                                  <div class="m-r-10"><a class="btn btn-circle btn-info text-white"><%=volunteer[i].first_name[0]%><%=volunteer[i].last_name[0]%></a></div>
+                                                  <div class="">
+                                                      <h4 class="m-b-0 font-16"><%= volunteer[i].first_name %> <%=volunteer[i].last_name %></h4>
+                                                  </div>
+                                              </div>
+                                          </td>
+                                          <td><%= volunteer[i].email_id%></td>
+                                          <td>
+                                            <a href="/review_volunteer_application/<%= volunteer[i]._id %>"><button type="submit" class="btn btn-default" style="background-color:#d33f8d;">Review Application</button></a>
+                                          </td>
+                                      </tr>
+                                  </tbody>
+                                    <% } %>
+                                  <% } %>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <!-- column -->
+                  <div class="col-12">
+                      <div class="card">
+                          <div class="card-body">
+                              <!-- title -->
+                              <div class="d-md-flex align-items-center">
+                                  <div>
+                                      <h4 class="card-title">Club Requests</h4>
+                                      <h5 class="card-subtitle">Unreview Club Request Of School</h5>
+                                  </div>
+                              </div>
+                              <!-- title -->
+                          </div>
+                          <div class="table-responsive">
+                              <table class="table v-middle">
+                                  <thead>
+                                      <tr class="bg-light">
+                                          <th class="border-top-0">School Name</th>
+                                          <th class="border-top-0">School Email-id</th>
+                                          <th class="border-top-0"></th>
+                                      </tr>
+                                  </thead>
+                                  <% for (var i=0; i< club.length; i++) {%>
+                                    <% if (club[i].review_done=="false") {%>
+                                  <tbody>
+                                      <tr>
+                                          <td>
+                                              <div class="d-flex align-items-center">
+                                                  <div class="m-r-10"><a class="btn btn-circle btn-info text-white"><%= club[i].school_name[0]%></a></div>
+                                                  <div class="">
+                                                      <h4 class="m-b-0 font-16"><%= club[i].school_name%></h4>
+                                                  </div>
+                                              </div>
+                                          </td>
+                                          <td><%= club[i].school_email_id%></td>
+                                          <td>
+                                            <a href="/review_club_application/<%= club[i]._id%>"><button type="submit" class="btn btn-default" style="background-color:#d33f8d;">Verify Request</button></a>
+                                          </td>
+                                      </tr>
+                                  </tbody>
+                                    <% } %>
+                                  <% } %>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!-- <footer class="footer text-center">
+              All Rights Reserved by Xtreme Admin. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
+          </footer> -->
+      </div>
+  </div>
+<%- include('admin_footer') %>

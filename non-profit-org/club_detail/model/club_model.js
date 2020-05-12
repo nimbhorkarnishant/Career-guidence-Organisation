@@ -50,6 +50,10 @@ const club_registration = new mongoose.Schema({
     type: String,
     required: true
   },
+  review_done:{
+    type:String,
+    required:true,
+  },
   createdAt: {
    type: Date,
    default: Date.now

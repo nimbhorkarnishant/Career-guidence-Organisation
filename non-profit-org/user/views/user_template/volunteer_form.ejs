@@ -8,18 +8,18 @@
 
 				<div class="wrap-input100 validate-input" data-validate="Name is required">
 					<span class="label-input100"> First Name</span>
-					<input class="input100" value="<%= user_detail.first_name%>" type="text" name="first_name" placeholder="Enter your First name" required>
+					<input class="input100" value="<%= user_detail[0].first_name%>" type="text" name="first_name" placeholder="Enter your First name" required>
 					<span class="focus-input100"></span>
 				</div>
 				<div class="wrap-input100 validate-input" data-validate="Name is required">
 					<span class="label-input100"> Last Name</span>
-					<input class="input100" value="<%= user_detail.last_name%>" type="text" name="last_name" placeholder="Enter your Last name" required>
+					<input class="input100" value="<%= user_detail[0].last_name%>" type="text" name="last_name" placeholder="Enter your Last name" required>
 					<span class="focus-input100"></span>
 				</div>
 
 				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 					<span class="label-input100">Email</span>
-					<input class="input100" value="<%= user_detail.email_id%>" type="text" name="email_d" placeholder="Enter your email addess" required>
+					<input class="input100" value="<%= user_detail[0].email_id%>" type="text" name="email_d" placeholder="Enter your email addess" required>
 					<span class="focus-input100"></span>
 				</div>
 				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">

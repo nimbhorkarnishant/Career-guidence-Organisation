@@ -11,18 +11,19 @@ const user_fun=require('../../user/model/user_function')
 
 
 router.get('/register_for_volunteer',async (req,res) =>{
-  var user_status="";
+  var user_data=[];
+  var user_access="";
   if (req.session.user_detail) {
-    user_status="login";
+    user_data=req.session.user_detail;
+    user_access=req.session.user_detail[0].user_access;
     var message_data=req.flash("message");
     res.render('user_template/volunteer_form',
     { title: 'Learncess|be volunteer',css_main:'css/home.css',
       css_file1:'css/util.css',
       css_file2:'css/volunteer_css.css',
       css_file3:'css/bootstrap.min.css',
-      message_dict:{"page":"",message_data},
-      user_status:user_status,
-      user_detail:req.session.user_detail[0],
+      message_dict:{"page":"",message_data,"user_access":user_access},
+      user_detail:user_data,
     })
   }
   else {
@@ -68,6 +69,7 @@ router.post('/registering_for_volunteer',async (req,res) =>{
                         linkdin_url:req.body.url,
                         resume_filename:token+file.name,
                         description_for_join:req.body.description,
+                        review_done:'false',
 
                       })
                       volunteer_data.save();

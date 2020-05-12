@@ -1,0 +1,155 @@
+<%- include('admin_header') %>
+<div class="page-wrapper">
+  <div class="page-breadcrumb">
+    <div class="row align-items-center">
+        <div class="col-5">
+            <h4 class="page-title">User Authentication</h4>
+            <div class="d-flex align-items-center">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Visit Website</a></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+  </div>
+          <div class="container-fluid">
+               <div class="row">
+                  <div class="col-md-8">
+                      <div class="card">
+                          <div class="card-body">
+                              <div class="d-md-flex align-items-center">
+                                  <div>
+                                      <h4 class="card-title">Users Summary</h4>
+                                      <h5 class="card-subtitle">Overview of User Detail</h5>
+                                  </div>
+                              </div>
+                                <div class="row">
+                                  <div class="col-md-6 mb-4">
+                                    <div class="card gradient-card">
+                                      <div class="card-image" style="background-image: url(https://cdn.pixabay.com/photo/2016/04/15/18/05/computer-1331579__340.png)">
+                                        <div class="text-white d-flex h-100 mask blue-gradient-rgba" style="background-color:#0c4aea75">
+                                          <div class="first-content align-self-center p-3">
+                                            <h3 class="card-title">Total Users</h3>
+                                            <p class="lead mb-0"><%= user.length%></p>
+                                          </div>
+                                          <div class="second-content align-self-center mx-auto text-center">
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-4">
+                      <div class="card">
+                          <div class="card-body">
+                              <h4 class="card-title">Feeds</h4>
+                              <div class="feed-widget">
+                                  <ul class="list-style-none feed-body m-0 p-b-20">
+                                      <li class="feed-item">
+                                          <div class="feed-icon bg-info"><i class="far fa-bell"></i></div> You have 4 pending tasks. <span class="ml-auto font-12 text-muted">Just Now</span></li>
+                                      <li class="feed-item">
+                                          <div class="feed-icon bg-success"><i class="ti-server"></i></div> Server #1 overloaded.<span class="ml-auto font-12 text-muted">2 Hours ago</span></li>
+                                      <li class="feed-item">
+                                          <div class="feed-icon bg-warning"><i class="ti-shopping-cart"></i></div> New order received.<span class="ml-auto font-12 text-muted">31 May</span></li>
+                                      <li class="feed-item">
+                                          <div class="feed-icon bg-danger"><i class="ti-user"></i></div> New user registered.<span class="ml-auto font-12 text-muted">30 May</span></li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="row">
+                  <!-- column -->
+                  <div class="col-12">
+                      <div class="card">
+                          <div class="card-body">
+                            <div class="d-md-flex align-items-center">
+                                <div>
+                                    <h4 class="card-title">Register Users</h4>
+                                    <h5 class="card-subtitle">Details Of All Users</h5>
+                                </div>
+                                <ul class="navbar-nav float-left mr-auto">
+                                    <!-- ============================================================== -->
+                                    <!-- Search -->
+                                    <!-- ============================================================== -->
+                                    <li class="nav-item search-box"> <a class="nav-link waves-effect waves-dark" href="javascript:void(0)"><i class="ti-search"></i></a>
+                                        <form class="app-search position-absolute">
+                                            <input type="text" id="input_filter" class="form-control" placeholder="Search User By Name,Email" onkeypress="input_filter()"> <a class="srh-btn"><i class="ti-close"></i></a>
+                                        </form>
+                                    </li>
+                                </ul>
+                                <div class="ml-auto">
+                                    <div class="dl">
+                                        <select class="custom-select" id="dropdown_filter" onchange="dropdown_filter_data()">
+                                            <option value="None" selected>Filter By User Access</option>
+                                            <option value="superadmin">Super Admin</option>
+                                            <option value="admin">Admin</option>
+                                            <option value="user">User</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                              <!-- title -->
+                          </div>
+                          <div class="table-responsive">
+                              <table class="table v-middle">
+                                  <thead>
+                                      <tr class="bg-light">
+                                          <th class="border-top-0">User Name</th>
+                                          <th class="border-top-0">Email-id</th>
+                                          <th class="border-top-0"></th>
+                                      </tr>
+                                  </thead>
+                                  <div class="" id=user_data>
+                                    <% for (var i=0; i< user.length; i++) {%>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="m-r-10"><a class="btn btn-circle btn-info text-white"><%=user[i].first_name[0]%><%=user[i].last_name[0]%></a></div>
+                                                    <div class="">
+                                                        <h4 class="m-b-0 font-16"><%= user[i].first_name %> <%=user[i].last_name %></h4>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><%= user[i].email_id%></td>
+                                            <td>
+                                              <a href="/user_detail/<%= user[i]._id %>"><button type="submit" class="btn btn-default" style="background-color:#d33f8d;">Review Application</button></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <% } %>
+                                  </div>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!-- <footer class="footer text-center">
+              All Rights Reserved by Xtreme Admin. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
+          </footer> -->
+      </div>
+  </div>
+  <script type="text/javascript">
+    // for (var i = 0; i < <%= user.length%>; i++) {
+    //   alert(<%= user[i]%>);
+    // }
+    // function dropdown_filter_data(){
+    //   alert(document.getElementById("dropdown_filter").value);
+    //   //document.getElementById('user_data')
+    //   var user_data=[];
+    //
+    // }
+
+
+
+  </script>
+<%- include('admin_footer') %>

@@ -15,6 +15,7 @@
 
 
 
+
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -75,20 +76,35 @@
 	<div class="" id="message_box_alert"></div>
  <script type="text/javascript">
  window.onload = function() {
-//	alert("<%= user_status%>");
-//alert("<%= message_dict.message_data%>")
 	var data=document.getElementById("message_box_alert");
- 	 if ("<%= user_status%>"=="login") {
+	//alert(<%= user_detail.length%>);
+ 	 if (<%= user_detail.length%>!=0) {
 		 var st='';
-			st+='<li class="active"><a class="waves-effect waves-dark" href="/">Home</a></li>'+
-			'<li class="dropdown">'+
-				'<a href="#" data-toggle="dropdown" class="dropdown-toggle waves-effect waves-dark">More Option<b class="caret"></b></a>'+
-				'<ul class="dropdown-menu">'+
-					'<li><a class="waves-effect waves-dark" href="/register_for_volunteer" id="volunter">Be a volunter</a></li>'+
-					'<li><a class="waves-effect waves-dark" href="/Invite_for_club" id="club_request">Invite for club </a></li>'+
-				'</ul>'+
-			'</li>'+
-			'</li><li ><a class="waves-effect waves-dark" href="/logout" >Logout</a></li>';
+		 if ("<%= message_dict.user_access%>"=="superadmin") {
+			 st+='<li class="active"><a class="waves-effect waves-dark" href="/">Home</a></li>'+
+ 			'<li class="dropdown">'+
+ 				'<a href="#" data-toggle="dropdown" class="dropdown-toggle waves-effect waves-dark">More Option<b class="caret"></b></a>'+
+ 				'<ul class="dropdown-menu">'+
+ 					'<li><a class="waves-effect waves-dark" href="/register_for_volunteer" id="volunter">Be a volunter</a></li>'+
+ 					'<li><a class="waves-effect waves-dark" href="/Invite_for_club" id="club_request">Invite for club </a></li>'+
+						'<li><a class="waves-effect waves-dark" href="/admin" id="admin_pannel">Admin Pannel</a></li>'+
+ 				'</ul>'+
+ 			'</li>'+
+ 			'</li><li ><a class="waves-effect waves-dark" href="/logout" >Logout</a></li>';
+
+		 }
+		 else {
+			 st+='<li class="active"><a class="waves-effect waves-dark" href="/">Home</a></li>'+
+ 			'<li class="dropdown">'+
+ 				'<a href="#" data-toggle="dropdown" class="dropdown-toggle waves-effect waves-dark">More Option<b class="caret"></b></a>'+
+ 				'<ul class="dropdown-menu">'+
+ 					'<li><a class="waves-effect waves-dark" href="/register_for_volunteer" id="volunter">Be a volunter</a></li>'+
+ 					'<li><a class="waves-effect waves-dark" href="/Invite_for_club" id="club_request">Invite for club </a></li>'+
+ 				'</ul>'+
+ 			'</li>'+
+ 			'</li><li ><a class="waves-effect waves-dark" href="/logout" >Logout</a></li>';
+
+		 }
 		 	//console.log(document.getElementById('menu_bar').innerHTML);
 			document.getElementById('menu_bar').innerHTML=st;
 		}

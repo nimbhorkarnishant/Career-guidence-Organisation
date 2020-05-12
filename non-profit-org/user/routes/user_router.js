@@ -9,9 +9,11 @@ var crypto = require("crypto");
 
 
 router.get('/',async (req,res) =>{
-  var user_status="";
+  var user_data=[];
+  var user_access="";
   if (req.session.user_detail) {
-    user_status="login";
+    user_data=req.session.user_detail;
+    var user_access=req.session.user_detail[0].user_access;
   }
 
   //req.flash("message","");
@@ -21,35 +23,18 @@ router.get('/',async (req,res) =>{
     css_file1:'css/flexslider.css',
     css_file2:'css/fancybox/jquery.fancybox.css',
     css_file3:'css/bootstrap.min.css',
-    message_dict:{"page":"home",message_data},
-    user_status:user_status,
+    message_dict:{"page":"home",message_data,"user_access":user_access},
+    user_detail:user_data,
   })
 })
-// router.get('/register_for_volunteer',async (req,res) =>{
-//   var user_status="";
-//   if (req.session.user_detail) {
-//     user_status="login";
-//     var message_data=req.flash("message");
-//     res.render('user_template/volunteer_form',
-//     { title: 'Learncess|be volunteer',css_main:'css/home.css',
-//       css_file1:'css/util.css',
-//       css_file2:'css/volunteer_css.css',
-//       css_file3:'css/bootstrap.min.css',
-//       message_dict:{"page":"",message_data},
-//       user_status:user_status,
-//     })
-//   }
-//   else {
-//     req.flash("message","You have to login for this Feature!");
-//     res.redirect('/login');
-//   }
-//
-// })
 
 router.get('/login',async (req,res) =>{
-  var user_status="";
+  var user_data=[];
+  var user_access="";
   if (req.session.user_detail) {
-    user_status="login";
+    user_data=req.session.user_detail;
+    var user_access=req.session.user_detail[0].user_access;
+
   }
   var message_data=req.flash("message");
   res.render('user_template/auth_login',
@@ -57,14 +42,17 @@ router.get('/login',async (req,res) =>{
     css_file1:'css/util.css',
     css_file2:'css/auth_login.css',
     css_file3:'css/bootstrap.min.css',
-    message_dict:{"page":"",message_data},
-    user_status:user_status,
+    message_dict:{"page":"",message_data,"user_access":user_access},
+    user_detail:user_data
   })
 })
 router.get('/register',async (req,res) =>{
-  var user_status="";
+  var user_data=[];
+  var user_access="";
   if (req.session.user_detail) {
-    user_status="login";
+    user_data=req.session.user_detail;
+    var user_access=req.session.user_detail[0].user_access;
+
   }
   var message_data=req.flash("message");
   res.render('user_template/auth_register',
@@ -72,15 +60,17 @@ router.get('/register',async (req,res) =>{
     css_file1:'css/util.css',
     css_file2:'css/auth_login.css',
     css_file3:'css/bootstrap.min.css',
-    message_dict:{"page":"",message_data},
-    user_status:user_status
+    message_dict:{"page":"",message_data,"user_access":user_access},
+    user_detail:user_data,
   })
 })
 
 router.get('/email_verification',async (req,res) =>{
-  var user_status="";
+  var user_data=[];
+  var user_acces="";
   if (req.session.user_detail) {
-    user_status="login";
+    user_data=req.session.user_detail;
+    var user_access=req.session.user_detail[0].user_access;
   }
   var message_data=req.flash("message");
   res.render('user_template/otp_form',
@@ -89,8 +79,8 @@ router.get('/email_verification',async (req,res) =>{
     css_file2:'css/auth_login.css',
     css_file3:'css/bootstrap.min.css',
     email_id:req.session.user_auth.email_id,
-    message_dict:{"page":"",message_data},
-    user_status:user_status
+    message_dict:{"page":"",message_data,user_access},
+    user_detail:user_data,
   })
 })
 
@@ -121,6 +111,7 @@ router.post('/registering_user',async (req,res) =>{
           first_name:first_name,
           last_name:last_name,
           email_id:email_id,
+          user_access:"user",
           password:re_password,
         })
         try{
@@ -252,9 +243,12 @@ router.get('/forgot_password',async (req,res) =>{
        var token = buf.toString('hex');
        console.log(token);
      });
-  var user_status="";
+  var user_data=[];
+  var user_access="";
   if (req.session.user_detail) {
-    user_status="login";
+    user_data=req.session.user_detail;
+    user_access=req.session.user_detail[0].user_access;
+
   }
   let message_data=req.flash("message");
   res.render('user_template/forgot_password',
@@ -262,8 +256,8 @@ router.get('/forgot_password',async (req,res) =>{
     css_file1:'css/util.css',
     css_file2:'css/auth_login.css',
     css_file3:'css/bootstrap.min.css',
-    message_dict:{"page":"",message_data},
-    user_status:user_status,
+    message_dict:{"page":"",message_data,"user_access":user_access},
+    user_detail:user_data,
   })
 })
 
@@ -310,9 +304,12 @@ router.post('/reset_password',async (req,res) =>{
 })
 
 router.get('/password-reset-confirm',async (req,res) =>{
-  var user_status="";
+  var user_data=[];
+  var user_access="";
   if (req.session.user_detail) {
-    user_status="login";
+    user_data=req.session.user_detail;
+    user_access=req.session.user_detail[0].user_access;
+
   }
   let message_data=req.flash("message");
   user_password_reset.find({ password_token:req.query.token, token_expired_time: { $gt: Date.now() } }, function(err, response) {
@@ -330,17 +327,13 @@ router.get('/password-reset-confirm',async (req,res) =>{
         css_file3:'css/bootstrap.min.css',
         token:response[0].password_token,
         id:response[0].user_id,
-        message_dict:{"page":"",message_data},
-        user_status:user_status,
+        message_dict:{"page":"",message_data,"user_access":user_access},
+        user_detail:user_data,
       })
     }
   });
 })
 router.post('/reset_password_done/:token/:user_id',async (req,res) =>{
-  var user_status="";
-  if (req.session.user_detail) {
-    user_status="login";
-  }
   let message_data=req.flash("message");
   let password1=req.body.pass1;
   let password2=req.body.pass2;

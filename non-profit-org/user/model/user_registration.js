@@ -17,6 +17,10 @@ const user_registration = new mongoose.Schema({
     required: true,
     unique: true
   },
+  user_access:{
+    type:String,
+    required:true
+  },
   password: {
     type: String,
     required: true
