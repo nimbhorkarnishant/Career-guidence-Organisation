@@ -1,6 +1,7 @@
 const express = require('express')
 var nodemailer = require('nodemailer');
 const club_registration = require('./../model/club_model')
+const club_record = require('./../model/club_record')
 const router = express.Router()
 const app=express()
 var crypto = require("crypto");
@@ -56,7 +57,14 @@ router.post('/Inviting_for_club',async (req,res) =>{
               school_cordinator_phone_no:req.body.school_cordi_phone_no,
               review_done:'false',
             })
+            const club_record_data=club_record({
+              user_id:req.session.user_detail[0]._id,
+              club_id:club_data._id,
+              club_request_status:"None",
+
+            })
             club_data.save();
+            club_record_data.save();
             subject='Club Invitation- '+ req.headers.host;
             text='Hello '+req.body.school_name+'\n\nWe Accepted your Invitation for club setup.'+
             '\nFurther Instruction we will send you via school email id as well as we will contact to your cordinator for more detail .\n'+

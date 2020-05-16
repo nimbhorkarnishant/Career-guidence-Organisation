@@ -3,6 +3,12 @@ const user_router=require('./user/routes/user_router')
 const volunteer_router=require('./volunteer/routes/volunteer_router')
 const club_router=require('./club_detail/routes/club_router')
 const admin_router=require('./admin_pannel/routes/admin_pannel_router')
+const admin_user_router=require('./admin_pannel/routes/admin_user_router')
+const admin_volunteer_router=require('./admin_pannel/routes/admin_volunteer_router')
+const admin_club_router=require('./admin_pannel/routes/admin_club_router')
+
+
+
 
 const mongoose=require('mongoose')
 const fileUpload = require('express-fileupload');
@@ -38,6 +44,9 @@ app.use("/",user_router)
 app.use("/",volunteer_router)
 app.use("/",club_router)
 app.use("/",admin_router)
+app.use("/",admin_user_router)
+app.use("/",admin_volunteer_router)
+app.use("/",admin_club_router)
 
 
 // app.get('/new',function(req,res){

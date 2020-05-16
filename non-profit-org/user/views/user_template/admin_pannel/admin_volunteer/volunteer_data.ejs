@@ -1,4 +1,4 @@
-<%- include('admin_header') %>
+<%- include('../admin_header') %>
 <div class="page-wrapper">
   <div class="page-breadcrumb">
     <div class="row align-items-center">
@@ -121,7 +121,7 @@
                                             </td>
                                             <td><%= volunteer[i].email_id%></td>
                                             <td>
-                                              <a href="/user_detail/<%= volunteer[i]._id %>"><button type="submit" class="btn btn-default" style="background-color:#d33f8d;">Review Application</button></a>
+                                              <a href="/volunteer_detail/<%= volunteer[i]._id %>"><button type="submit" class="btn btn-default" style="background-color:#d33f8d;">Review Application</button></a>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -139,4 +139,4 @@
       </div>
   </div>
 
-<%- include('admin_footer') %>
+<%- include('../admin_footer') %>

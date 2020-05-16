@@ -1,9 +1,9 @@
-<%- include('admin_header') %>
+<%- include('../admin_header') %>
 <div class="page-wrapper">
   <div class="page-breadcrumb">
     <div class="row align-items-center">
         <div class="col-5">
-            <h4 class="page-title">User Authentication</h4>
+            <h4 class="page-title">Clubs Detail</h4>
             <div class="d-flex align-items-center">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
@@ -21,8 +21,8 @@
                           <div class="card-body">
                               <div class="d-md-flex align-items-center">
                                   <div>
-                                      <h4 class="card-title">Users Summary</h4>
-                                      <h5 class="card-subtitle">Overview of User Detail</h5>
+                                      <h4 class="card-title">Clubs Summary</h4>
+                                      <h5 class="card-subtitle">Overview of Club Detail</h5>
                                   </div>
                               </div>
                                 <div class="row">
@@ -31,8 +31,8 @@
                                       <div class="card-image" style="background-image: url(https://cdn.pixabay.com/photo/2016/04/15/18/05/computer-1331579__340.png)">
                                         <div class="text-white d-flex h-100 mask blue-gradient-rgba" style="background-color:#0c4aea75">
                                           <div class="first-content align-self-center p-3">
-                                            <h3 class="card-title">Total Users</h3>
-                                            <p class="lead mb-0"><%= user.length%></p>
+                                            <h3 class="card-title">Total Club</h3>
+                                            <p class="lead mb-0"><%= club.length%></p>
                                           </div>
                                           <div class="second-content align-self-center mx-auto text-center">
                                         </div>
@@ -72,8 +72,8 @@
                           <div class="card-body">
                             <div class="d-md-flex align-items-center">
                                 <div>
-                                    <h4 class="card-title">Register Users</h4>
-                                    <h5 class="card-subtitle">Details Of All Users</h5>
+                                    <h4 class="card-title">Register Club</h4>
+                                    <h5 class="card-subtitle">Details Of All Club</h5>
                                 </div>
                                 <ul class="navbar-nav float-left mr-auto">
                                     <!-- ============================================================== -->
@@ -102,26 +102,26 @@
                               <table class="table v-middle">
                                   <thead>
                                       <tr class="bg-light">
-                                          <th class="border-top-0">User Name</th>
+                                          <th class="border-top-0">School Name</th>
                                           <th class="border-top-0">Email-id</th>
                                           <th class="border-top-0"></th>
                                       </tr>
                                   </thead>
                                   <div class="" id=user_data>
-                                    <% for (var i=0; i< user.length; i++) {%>
+                                    <% for (var i=0; i< club.length; i++) {%>
                                     <tbody>
                                         <tr>
                                             <td>
                                                 <div class="d-flex align-items-center">
-                                                    <div class="m-r-10"><a class="btn btn-circle btn-info text-white"><%=user[i].first_name[0]%><%=user[i].last_name[0]%></a></div>
+                                                    <div class="m-r-10"><a class="btn btn-circle btn-info text-white"><%=club[i].school_name[0]%></a></div>
                                                     <div class="">
-                                                        <h4 class="m-b-0 font-16"><%= user[i].first_name %> <%=user[i].last_name %></h4>
+                                                        <h4 class="m-b-0 font-16"><%= club[i].school_name %></h4>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td><%= user[i].email_id%></td>
+                                            <td><%= club[i].school_email_id%></td>
                                             <td>
-                                              <a href="/user_detail/<%= user[i]._id %>"><button type="submit" class="btn btn-default" style="background-color:#d33f8d;">Review Application</button></a>
+                                              <a href="/club_request_detail/<%= club[i]._id %>"><button type="submit" class="btn btn-default" style="background-color:#d33f8d;">Review Application</button></a>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -138,18 +138,5 @@
           </footer> -->
       </div>
   </div>
-  <script type="text/javascript">
-    // for (var i = 0; i < <%= user.length%>; i++) {
-    //   alert(<%= user[i]%>);
-    // }
-    // function dropdown_filter_data(){
-    //   alert(document.getElementById("dropdown_filter").value);
-    //   //document.getElementById('user_data')
-    //   var user_data=[];
-    //
-    // }
 
-
-
-  </script>
-<%- include('admin_footer') %>
+<%- include('../admin_footer') %>

@@ -1,0 +1,185 @@
+<%- include('../admin_header') %>
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="page-breadcrumb">
+        <div class="row align-items-center">
+            <div class="col-5">
+                <h4 class="page-title">Club Detail</h4>
+                <div class="d-flex align-items-center">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Visit Website</a></li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Start Page Content -->
+            <!-- ============================================================== -->
+            <!-- Row -->
+            <div class="row">
+                <!-- Column -->
+                <div class="col-lg-4 col-xlg-3 col-md-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <center class="m-t-30"> <img src="../../assets/images/users/5.jpg" class="rounded-circle" width="150" />
+
+                            </center>
+                        </div>
+                        <div>
+                            <hr> </div>
+                        <div class="card-body">
+                          <form class="form-horizontal form-material" action="/admin_update_club_request_record/<%=club[0]._id%>" method="post">
+                            <div class="form-group">
+                                  <label class="col-sm-12">Application Review</label>
+                                  <div class="col-sm-12">
+                                      <select class="form-control form-control-line" name="application_review">
+                                        <% if(club[0].review_done=="false"){%>
+                                          <option value="false" selected>Not Done</option>
+                                          <option value="true">Done</option>
+                                        <%}else if (club[0].review_done=="true"){%>
+                                          <option value="false" >Not Done</option>
+                                          <option value="true" selected>Done</option>
+                                        <%} else {%>
+                                          <option value="false" value="none">Something went wrong</option>
+                                        <%}%>
+                                      </select>
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                    <label class="col-sm-12">Request Acepted (Part of Organization)</label>
+                                    <div class="col-sm-12">
+                                        <select class="form-control form-control-line" name="application_status">
+                                          <% if(club_record[0].club_request_status=="accepted"){%>
+                                            <option value="accepted" selected>Yes (Accpted)</option>
+                                            <option value="rejected">No (Rejected)</option>
+                                          <%}else if (club_record[0].club_request_status=="rejected"){%>
+                                            <option value="accepted" >Yes (Accpted)</option>
+                                            <option value="rejected" selected>No (Rejected)</option>
+                                          <%} else {%>
+                                            <option value="false" value="None" selected>None</option>
+                                            <option value="accepted" >Yes (Accpted)</option>
+                                            <option value="rejected" >No (Rejected)</option>
+                                          <%}%>
+                                        </select>
+                                    </div>
+                                </div>
+                              <div class="form-group">
+                                  <div class="col-sm-12">
+                                      <button type="submit" class="btn btn-success"  style="background-color:#d33f8d">Update Club request Record</button>
+                                  </div>
+                              </div>
+                          </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- Column -->
+                <!-- Column -->
+                <div class="col-lg-8 col-xlg-9 col-md-7">
+                    <div class="card">
+                        <div class="card-body">
+                            <form class="form-horizontal form-material" method="post" action="/admin_update_school_detail/<%= club[0]._id%>">
+                                <div class="form-group">
+                                    <label class="col-md-12">School Name</label>
+                                    <div class="col-md-12">
+                                        <input type="text" value="<%= club[0].school_name%>" name="school_name" placeholder="<%= club[0].school_name%>" class="form-control form-control-line">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-email" class="col-md-12">School Email</label>
+                                    <div class="col-md-12">
+                                        <input type="email" value="<%= club[0].school_email_id%>" name="school_email_id" placeholder="<%= club[0].school_email_id%>" class="form-control form-control-line" name="example-email" id="example-email">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-email" class="col-md-12">School Address</label>
+                                    <div class="col-md-12">
+                                        <input type="text" value="<%= club[0].school_address%>" name="school_address" placeholder="<%= club[0].school_address%>" class="form-control form-control-line" name="example-email" id="example-email">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-email" class="col-md-12">School Country</label>
+                                    <div class="col-md-12">
+                                        <input type="text" value="<%= club[0].school_country%>" name="school_country" placeholder="<%= club[0].school_country%>" class="form-control form-control-line" name="example-email" id="example-email">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-email" class="col-md-12">School State</label>
+                                    <div class="col-md-12">
+                                        <input type="text" value="<%= club[0].school_state%>" name="school_state" placeholder="<%= club[0].school_state%>" class="form-control form-control-line" name="example-email" id="example-email">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-email" class="col-md-12">School City</label>
+                                    <div class="col-md-12">
+                                        <input type="text" value="<%= club[0].school_city%>" name="school_city" placeholder="<%= club[0].school_city%>" class="form-control form-control-line" name="example-email" id="example-email">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-email" class="col-md-12">School Area Pincode</label>
+                                    <div class="col-md-12">
+                                        <input type="text" value="<%= club[0].school_area_pin_code%>" name="school_area_pin_code" placeholder="<%= club[0].school_area_pin_code%>" class="form-control form-control-line" name="example-email" id="example-email">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-email" class="col-md-12">School Website</label>
+                                    <div class="col-md-12">
+                                        <input type="url" value="<%= club[0].school_website_url%>" name="school_website_url" placeholder="<%= club[0].school_website_url%>" class="form-control form-control-line" name="example-email" id="example-email">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-12">School Co-ordinator Name</label>
+                                    <div class="col-md-12">
+                                        <input type="text" value="<%= club[0].school_cordinator_name%>" name="school_cordinator_name" placeholder="<%= club[0].school_cordinator_name%>" class="form-control form-control-line">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-12">School Co-ordinator-Email-Id</label>
+                                    <div class="col-md-12">
+                                        <input type="text" value="<%= club[0].school_cordinator_email_id%>" name="school_cordinator_email_id" placeholder="<%= club[0].school_cordinator_email_id%>" class="form-control form-control-line">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-12">School Co-ordinator Phone Number</label>
+                                    <div class="col-md-12">
+                                        <input type="text" value="<%= club[0].school_cordinator_phone_no%>" name="school_cordinator_phone_no" placeholder="<%= club[0].school_cordinator_phone_no%>" class="form-control form-control-line">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <button class="btn btn-success">Update School Detail</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <%if (club_record[0].club_request_status=="rejected"){%>
+                              <div class="form-group">
+                                  <div class="col-sm-12">
+                                    <a href='/delete_school/<%=club[0]._id%>'>
+                                      <button  class="btn btn-success" style="background-color:#d33f8d;margin-left:30px;">Delete School</button>
+                                    </a>
+                                  </div>
+                              </div>
+                            <%}%>
+                        </div>
+                    </div>
+                </div>
+                <!-- Column -->
+            </div>
+            <!-- Row -->
+            <!-- ============================================================== -->
+            <!-- End PAge Content -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Right sidebar -->
+            <!-- ============================================================== -->
+            <!-- .right-sidebar -->
+            <!-- ============================================================== -->
+            <!-- End Right sidebar -->
+            <!-- ============================================================== -->
+        </div>
+<%- include('../admin_footer') %>

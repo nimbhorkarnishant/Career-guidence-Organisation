@@ -1,9 +1,9 @@
-<%- include('admin_header') %>
+<%- include('../admin_header') %>
 <div class="page-wrapper">
   <div class="page-breadcrumb">
     <div class="row align-items-center">
         <div class="col-5">
-            <h4 class="page-title">Clubs Detail</h4>
+            <h4 class="page-title">User Authentication</h4>
             <div class="d-flex align-items-center">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
@@ -21,8 +21,8 @@
                           <div class="card-body">
                               <div class="d-md-flex align-items-center">
                                   <div>
-                                      <h4 class="card-title">Clubs Summary</h4>
-                                      <h5 class="card-subtitle">Overview of Club Detail</h5>
+                                      <h4 class="card-title">Users Summary</h4>
+                                      <h5 class="card-subtitle">Overview of User Detail</h5>
                                   </div>
                               </div>
                                 <div class="row">
@@ -31,8 +31,8 @@
                                       <div class="card-image" style="background-image: url(https://cdn.pixabay.com/photo/2016/04/15/18/05/computer-1331579__340.png)">
                                         <div class="text-white d-flex h-100 mask blue-gradient-rgba" style="background-color:#0c4aea75">
                                           <div class="first-content align-self-center p-3">
-                                            <h3 class="card-title">Total Club</h3>
-                                            <p class="lead mb-0"><%= club.length%></p>
+                                            <h3 class="card-title">Total Users</h3>
+                                            <p class="lead mb-0"><%= user.length%></p>
                                           </div>
                                           <div class="second-content align-self-center mx-auto text-center">
                                         </div>
@@ -72,8 +72,8 @@
                           <div class="card-body">
                             <div class="d-md-flex align-items-center">
                                 <div>
-                                    <h4 class="card-title">Register Club</h4>
-                                    <h5 class="card-subtitle">Details Of All Club</h5>
+                                    <h4 class="card-title">Register Users</h4>
+                                    <h5 class="card-subtitle">Details Of All Users</h5>
                                 </div>
                                 <ul class="navbar-nav float-left mr-auto">
                                     <!-- ============================================================== -->
@@ -81,7 +81,9 @@
                                     <!-- ============================================================== -->
                                     <li class="nav-item search-box"> <a class="nav-link waves-effect waves-dark" href="javascript:void(0)"><i class="ti-search"></i></a>
                                         <form class="app-search position-absolute">
-                                            <input type="text" id="input_filter" class="form-control" placeholder="Search User By Name,Email" onkeypress="input_filter()"> <a class="srh-btn"><i class="ti-close"></i></a>
+                                            <input type="text" id="input_filter" class="form-control" placeholder="Search User By Name,Email">
+                                            <i class="fa fa-search" style="float:Right;margin-top:-37px;margin-right:80px;" onclick="input_filter_data()">
+                                            </i><a class="srh-btn"><i class="ti-close"></i></a>
                                         </form>
                                     </li>
                                 </ul>
@@ -102,26 +104,26 @@
                               <table class="table v-middle">
                                   <thead>
                                       <tr class="bg-light">
-                                          <th class="border-top-0">School Name</th>
+                                          <th class="border-top-0">User Name</th>
                                           <th class="border-top-0">Email-id</th>
                                           <th class="border-top-0"></th>
                                       </tr>
                                   </thead>
                                   <div class="" id=user_data>
-                                    <% for (var i=0; i< club.length; i++) {%>
+                                    <% for (var i=0; i< user.length; i++) {%>
                                     <tbody>
                                         <tr>
                                             <td>
                                                 <div class="d-flex align-items-center">
-                                                    <div class="m-r-10"><a class="btn btn-circle btn-info text-white"><%=club[i].school_name[0]%></a></div>
+                                                    <div class="m-r-10"><a class="btn btn-circle btn-info text-white"><%=user[i].first_name[0]%><%=user[i].last_name[0]%></a></div>
                                                     <div class="">
-                                                        <h4 class="m-b-0 font-16"><%= club[i].school_name %></h4>
+                                                        <h4 class="m-b-0 font-16"><%= user[i].first_name %> <%=user[i].last_name %></h4>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td><%= club[i].school_email_id%></td>
+                                            <td><%= user[i].email_id%></td>
                                             <td>
-                                              <a href="/user_detail/<%= club[i]._id %>"><button type="submit" class="btn btn-default" style="background-color:#d33f8d;">Review Application</button></a>
+                                              <a href="/user_detail/<%= user[i]._id %>"><button type="submit" class="btn btn-default" style="background-color:#d33f8d;">Check Detail</button></a>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -138,5 +140,15 @@
           </footer> -->
       </div>
   </div>
-
-<%- include('admin_footer') %>
+  <!-- <script type="text/javascript">
+    function input_filter_data() {
+    }
+    function dropdown_filter_data() {
+      alert(document.getElementById('dropdown_filter').value);
+      let request = async () => {
+        const response = await fetch('http://localhost:5000/User_Authentication_by_access/'+document.getElementById('dropdown_filter').value);
+        //const data = await response.json();
+      }
+    }
+  </script> -->
+<%- include('../admin_footer') %>

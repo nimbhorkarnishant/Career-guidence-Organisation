@@ -1,0 +1,216 @@
+<%- include('../admin_header') %>
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="page-breadcrumb">
+        <div class="row align-items-center">
+            <div class="col-5">
+                <h4 class="page-title">Volunteer Detail</h4>
+                <div class="d-flex align-items-center">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Visit Website</a></li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Start Page Content -->
+            <!-- ============================================================== -->
+            <!-- Row -->
+            <div class="row">
+                <!-- Column -->
+                <div class="col-lg-4 col-xlg-3 col-md-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <center class="m-t-30"> <img src="../../assets/images/users/5.jpg" class="rounded-circle" width="150" />
+
+                            </center>
+                        </div>
+                        <div>
+                            <hr> </div>
+                        <div class="card-body">
+                          <form class="form-horizontal form-material" action="/admin_update_volunteer_record/<%=volunteer[0]._id%>" method="post">
+                            <div class="form-group">
+                                  <label class="col-sm-12">Application Review</label>
+                                  <div class="col-sm-12">
+                                      <select class="form-control form-control-line" name="application_review">
+                                        <% if(volunteer[0].review_done=="false"){%>
+                                          <option value="false" selected>Not Done</option>
+                                          <option value="true">Done</option>
+                                        <%}else if (volunteer[0].review_done=="true"){%>
+                                          <option value="false" >Not Done</option>
+                                          <option value="true" selected>Done</option>
+                                        <%} else {%>
+                                          <option value="false" value="none">Something went wrong</option>
+                                        <%}%>
+                                      </select>
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                    <label class="col-sm-12">Application Acepted (Part of Organization)</label>
+                                    <div class="col-sm-12">
+                                        <select class="form-control form-control-line" name="application_status">
+                                          <% if(volunteer_record[0].application_status=="accepted"){%>
+                                            <option value="accepted" selected>Yes (Accpted)</option>
+                                            <option value="rejected">No (Rejected)</option>
+                                          <%}else if (volunteer_record[0].application_status=="rejected"){%>
+                                            <option value="accepted" >Yes (Accpted)</option>
+                                            <option value="rejected" selected>No (Rejected)</option>
+                                          <%} else {%>
+                                            <option value="false" value="None" selected>None</option>
+                                            <option value="accepted" >Yes (Accpted)</option>
+                                            <option value="rejected" >No (Rejected)</option>
+                                          <%}%>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                      <label class="col-sm-12">Position in Organisation</label>
+                                      <div class="col-sm-12">
+                                          <select class="form-control form-control-line" name="volunteer_position">
+                                            <% if(volunteer_record[0].position=="volunteer"){%>
+                                              <option value="volunteer" selected>Volunteer </option>
+                                              <option value="Founder" >Founder</option>
+                                              <option value="untitled">Untitled</option>
+                                            <%}else if (volunteer[0].position=="founder"){%>
+                                              <option value="volunteer">Volunteer </option>
+                                              <option value="founder" selected>Founder</option>
+                                              <option value="untitled">Untitled</option>
+                                            <%} else {%>
+                                              <option value="untitled" selected>Untitled</option>
+                                              <option value="volunteer">Volunteer </option>
+                                              <option value="founder" >Founder</option>
+                                            <%}%>
+                                          </select>
+                                      </div>
+                                  </div>
+                              <div class="form-group">
+                                  <div class="col-sm-12">
+                                      <button type="submit" class="btn btn-success" type="submit" style="background-color:#d33f8d">Update volunteer Record</button>
+                                  </div>
+                              </div>
+                          </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- Column -->
+                <!-- Column -->
+                <div class="col-lg-8 col-xlg-9 col-md-7">
+                    <div class="card">
+                        <div class="card-body">
+                            <form class="form-horizontal form-material" action="/admin_update_volunteer_data/<%= volunteer[0]._id%>" method="post">
+                                <div class="form-group">
+                                    <label class="col-md-12">First Name</label>
+                                    <div class="col-md-12">
+                                        <input type="text" value="<%= volunteer[0].first_name%>" name="first_name" placeholder="<%= volunteer[0].first_name%>" class="form-control form-control-line">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-12">First Name</label>
+                                    <div class="col-md-12">
+                                        <input type="text" value="<%= volunteer[0].last_name%>" name="last_name" placeholder="<%= volunteer[0].last_name%>" class="form-control form-control-line">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-email" class="col-md-12">Email</label>
+                                    <div class="col-md-12">
+                                        <input type="email" value="<%= volunteer[0].email_id%>" name="email_id" placeholder="<%= volunteer[0].email_id%>" class="form-control form-control-line" name="example-email" id="example-email">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-12">Phone No</label>
+                                    <div class="col-md-12">
+                                        <input type="text" value="<%= volunteer[0].mobile_no%>" name="mobile_no" placeholder="<%= volunteer[0].mobile_no%>" class="form-control form-control-line">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-email" class="col-md-12">Current Proffession</label>
+                                    <div class="col-md-12">
+                                        <input type="text" value="<%= volunteer[0].current_proffession%>" name="current_proffession" placeholder="<%= volunteer[0].current_proffession%>" class="form-control form-control-line" name="example-email" id="example-email">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-email" class="col-md-12">Current Address</label>
+                                    <div class="col-md-12">
+                                        <input type="text" value="<%= volunteer[0].current_address%>" name="current_address" placeholder="<%= volunteer[0].current_address%>" class="form-control form-control-line" name="example-email" id="example-email">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-email" class="col-md-12">Current Country</label>
+                                    <div class="col-md-12">
+                                        <input type="text" value="<%= volunteer[0].current_country%>" name="current_country" placeholder="<%= volunteer[0].current_country%>" class="form-control form-control-line" name="example-email" id="example-email">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-email" class="col-md-12">Current State</label>
+                                    <div class="col-md-12">
+                                        <input type="text" value="<%= volunteer[0].current_state%>" name="current_state" placeholder="<%= volunteer[0].current_state%>" class="form-control form-control-line" name="example-email" id="example-email">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-email" class="col-md-12">Current City</label>
+                                    <div class="col-md-12">
+                                        <input type="text" value="<%= volunteer[0].current_city%>" name="current_city" placeholder="<%= volunteer[0].current_city%>" class="form-control form-control-line" name="example-email" id="example-email">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-email" class="col-md-12">Current Pincode</label>
+                                    <div class="col-md-12">
+                                        <input type="text" value="<%= volunteer[0].current_pincode%>" name="current_pincode" placeholder="<%= volunteer[0].current_pincode%>" class="form-control form-control-line" name="example-email" id="example-email">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-email" class="col-md-12">Linkdin Profile</label>
+                                    <div class="col-md-12">
+                                        <input type="url" value="<%= volunteer[0].linkdin_url%>" name="linkdin_url" placeholder="<%= volunteer[0].linkdin_url%>" class="form-control form-control-line" name="example-email" id="example-email">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-12">Why User Want to Join</label>
+                                    <div class="col-md-12">
+                                        <textarea rows="5" name="description_for_join" class="form-control form-control-line"><%= volunteer[0].description_for_join%></textarea>
+                                    </div>
+                                </div
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <button type="submit" class="btn btn-success" style="background-color:#d33f8d">Update Volunteer Detail</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <%if (volunteer_record[0].application_status=="rejected"){%>
+                              <div class="form-group">
+                                  <div class="col-sm-12">
+                                    <a href='/delete_volunteer/<%=volunteer[0]._id%>'>
+                                      <button  class="btn btn-success" style="background-color:#d33f8d;margin-left:30px;">Delete volunteer</button>
+                                    </a>
+                                  </div>
+                              </div>
+                            <%}%>
+                        </div>
+                    </div>
+                </div>
+                <!-- Column -->
+            </div>
+            <!-- Row -->
+            <!-- ============================================================== -->
+            <!-- End PAge Content -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Right sidebar -->
+            <!-- ============================================================== -->
+            <!-- .right-sidebar -->
+            <!-- ============================================================== -->
+            <!-- End Right sidebar -->
+            <!-- ============================================================== -->
+        </div>
+        <script type="text/javascript">
+            $(".form_datetime").datetimepicker({
+                format: "dd MM yyyy - hh:ii"
+            });
+        </script>
+<%- include('../admin_footer') %>

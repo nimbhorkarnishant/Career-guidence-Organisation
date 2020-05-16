@@ -41,17 +41,17 @@ const volunteer_registration = new mongoose.Schema({
     type: String,
     required: true
   },
-  cuurent_pincode: {
+  current_pincode: {
     type: String,
     required: true
+  },
+  mobile_no:{
+    type: String,
+    required: true,
   },
   linkdin_url: {
     type: String,
     required: true
-  },
-  resume_filename:{
-    type:String,
-    required:true,
   },
   description_for_join: {
     type: String,
