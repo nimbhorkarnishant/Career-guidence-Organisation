@@ -1,0 +1,170 @@
+<%- include('../admin_header') %>
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="page-breadcrumb">
+        <div class="row align-items-center">
+            <div class="col-5">
+                <h4 class="page-title">Mentor Request Detail</h4>
+                <div class="d-flex align-items-center">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Visit Website</a></li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Start Page Content -->
+            <!-- ============================================================== -->
+            <!-- Row -->
+            <div class="row">
+                <!-- Column -->
+                <div class="col-lg-4 col-xlg-3 col-md-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <center class="m-t-30"> <img src="../../assets/images/users/5.jpg" class="rounded-circle" width="150" />
+
+                            </center>
+                        </div>
+                        <div>
+                            <hr> </div>
+                        <div class="card-body">
+                          <form class="form-horizontal form-material" action="/admin_update_mentor_request_record/<%=mentor_request[0]._id%>" method="post">
+                            <div class="form-group">
+                                  <label class="col-sm-12">Application Review</label>
+                                  <div class="col-sm-12">
+                                      <select class="form-control form-control-line" name="application_review">
+                                        <% if(mentor_request[0].review_done=="false"){%>
+                                          <option value="false" selected>Not Done</option>
+                                          <option value="true">Done</option>
+                                        <%}else if (mentor_request[0].review_done=="true"){%>
+                                          <option value="false" >Not Done</option>
+                                          <option value="true" selected>Done</option>
+                                        <%} else {%>
+                                          <option value="false" value="none">Something went wrong</option>
+                                        <%}%>
+                                      </select>
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                    <label class="col-sm-12">Request Status</label>
+                                    <div class="col-sm-12">
+                                        <select class="form-control form-control-line" name="request_status">
+                                          <% if(mentor_request_record[0].mentor_request_status=="complete"){%>
+                                            <option value="complete" selected>Complete</option>
+                                            <option value="incomplete">Pending</option>
+                                          <%}else if (mentor_request_record[0].mentor_request_status=="incomplete"){%>
+                                            <option value="complete" >Completed</option>
+                                            <option value="incomplete" selected>Pending</option>
+                                          <%}else{%>
+                                            <option value="" >Something Went wrong</option>
+                                          <%}%>
+                                        </select>
+                                    </div>
+                              </div>
+
+                              <div class="form-group">
+                                  <div class="col-sm-12">
+                                      <button type="submit" class="btn btn-success"  style="background-color:#d33f8d">Update Mentor request Record</button>
+                                  </div>
+                              </div>
+                          </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- Column -->
+                <!-- Column -->
+                <div class="col-lg-8 col-xlg-9 col-md-7">
+                    <div class="card">
+                        <div class="card-body">
+                            <form class="form-horizontal form-material" method="post" action="/admin_update_mentor_request/<%= mentor_request[0]._id%>">
+                                <div class="form-group">
+                                    <label class="col-md-12">School Name</label>
+                                    <div class="col-md-12">
+                                        <input type="text" value="<%= mentor_request[0].first_name%>" name="first_name" placeholder="<%= mentor_request[0].first_name%>" class="form-control form-control-line">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-12">Last Name</label>
+                                    <div class="col-md-12">
+                                        <input type="text" value="<%= mentor_request[0].last_name%>" name="last_name" placeholder="<%= mentor_request[0].last_name%>" class="form-control form-control-line">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-email" class="col-md-12">Email Id</label>
+                                    <div class="col-md-12">
+                                        <input type="email" value="<%= mentor_request[0].email_id%>" name="email_id" placeholder="<%= mentor_request[0].email_id%>" class="form-control form-control-line" name="example-email" id="example-email">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-12">Mobile Number</label>
+                                    <div class="col-md-12">
+                                        <input value="<%= mentor_request[0].mobile_no%>" type="text" name="mobile_no" placeholder="<%= mentor_request[0].mobile_no%>" class="form-control form-control-line" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                      <label class="col-sm-12">Call Preference</label>
+                                      <div class="col-sm-12">
+                                          <select class="form-control form-control-line" name="call_prefference">
+                                            <%if(mentor_request[0].call_prefference=="voice_call"){%>
+                                              <option value="voice_call" selected>Voice Call</option>
+                                              <option value="video_call">Video Chat</option>
+                                            <%}else if(mentor_request[0].call_prefference=="video_call"){%>
+                                              <option value="voice_call" >Voice Call</option>
+                                              <option value="video_call"selected>Video Chat</option>
+                                            <%}else{%>
+                                              <option value="None" selected>somrthing wrong</option>
+                                            <%}%>
+                                          </select>
+                                      </div>
+                                  </div>
+                                <div class="form-group">
+                                    <label class="col-md-12">Your Prefered Time For Call</label>
+                                    <div class="col-md-12">
+                                        <input value="<%= mentor_request[0].time_for_call%>" type="text" name="time_for_call" placeholder="<%= mentor_request[0].time_for_call%>" class="form-control form-control-line" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-12">Guidance topic</label>
+                                    <div class="col-md-12">
+                                        <textarea rows="5" class="form-control form-control-line" name="discription" placeholder="<%= mentor_request[0].describe_mentoring_topic%>" required><%= mentor_request[0].describe_mentoring_topic%></textarea>
+                                    </div>
+                                </div
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <button class="btn btn-success">Update Mentor request detail</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <%if (mentor_request_record[0].mentor_request_status=="complete"){%>
+                              <div class="form-group">
+                                  <div class="col-sm-12">
+                                    <a href='/delete_mentor_request/<%=mentor_request[0]._id%>'>
+                                      <button  class="btn btn-success" style="background-color:#d33f8d;margin-left:30px;">Delete Mentor Request</button>
+                                    </a>
+                                  </div>
+                              </div>
+                            <%}%>
+                        </div>
+                    </div>
+                </div>
+                <!-- Column -->
+            </div>
+            <!-- Row -->
+            <!-- ============================================================== -->
+            <!-- End PAge Content -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Right sidebar -->
+            <!-- ============================================================== -->
+            <!-- .right-sidebar -->
+            <!-- ============================================================== -->
+            <!-- End Right sidebar -->
+            <!-- ============================================================== -->
+        </div>
+<%- include('../admin_footer') %>

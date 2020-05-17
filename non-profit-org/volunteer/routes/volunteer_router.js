@@ -93,7 +93,7 @@ router.post('/registering_for_volunteer',async (req,res) =>{
                user_fun.email_validation(req.body.email_d,subject,text);
               req.flash("message","Your Registration is Successfully Accepted!");
               res.redirect('/')
-            
+
           }
           catch (e) {
             req.flash("message","Something is going wrong please refresh!");

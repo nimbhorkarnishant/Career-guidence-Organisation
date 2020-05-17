@@ -1,0 +1,83 @@
+<%- include('../header') %>
+<div class="container-contact100">
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form" action="/registering_mentor_request" method="post" enctype="multipart/form-data">
+				<span class="contact100-form-title">
+					Chat With Our Experts
+				</span>
+
+				<div class="wrap-input100 validate-input" data-validate="Name is required">
+					<span class="label-input100"> First Name</span>
+					<input class="input100" value="<%= user_detail[0].first_name%>" type="text" name="first_name" placeholder="Enter your First name" required>
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate="Name is required">
+					<span class="label-input100"> Last Name</span>
+					<input class="input100" value="<%= user_detail[0].last_name%>" type="text" name="last_name" placeholder="Enter your Last name" required>
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					<span class="label-input100">Email</span>
+					<input class="input100" value="<%= user_detail[0].email_id%>" type="text" name="email_id" placeholder="Enter your email addess" required>
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					<span class="label-input100">Your Mobile Number</span>
+					<input class="input100" type="text" name="mobile_no" placeholder="Enter your Mobile Number" required>
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 input100-select">
+          <span class="label-input100">Call Preference</span>
+          <div>
+            <select class="selection-2" name="call_prefference" id="city_dropdown" required>
+              <option value="voice_call">Voice Call</option>
+              <option value="video_call">Video Chat</option>
+            </select>
+          </div>
+          <span class="focus-input100"></span>
+        </div>
+				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					<span class="label-input100">Your Prefered Time For Call</span>
+					<input class="input100" type="text" name="time_for_call" placeholder="Time when you are free(Example: 9 AM to 6PM) or if you want anyt time just mention Any time" required>
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate = "Message is required">
+					<span class="label-input100">Describe guidance topic</span>
+					<textarea class="input100" name="discription" placeholder="Describe what type of guidance or having chat with our experties because this will help us to find best expert for you in that perticular field(example: I need help or guidence reated to 11,12 or chossing stream like machine learnning or datascience.)" required></textarea>
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="container-contact100-form-btn">
+					<div class="wrap-contact100-form-btn">
+						<div class="contact100-form-bgbtn"></div>
+						<button class="contact100-form-btn" type="submit">
+							<span>
+								Submit
+								<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+							</span>
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div id="dropDownSelect1"></div>
+
+<!--===============================================================================================-->
+<script src="jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<!-- <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script> -->
+
+<!--===============================================================================================-->
+<script>
+	$(".selection-2").select2({
+		minimumResultsForSearch: 20,
+		dropdownParent: $('#dropDownSelect1')
+	});
+</script>
+<script src="js/main.js"></script>
+<%- include('../footer') %>

@@ -6,6 +6,10 @@ const admin_router=require('./admin_pannel/routes/admin_pannel_router')
 const admin_user_router=require('./admin_pannel/routes/admin_user_router')
 const admin_volunteer_router=require('./admin_pannel/routes/admin_volunteer_router')
 const admin_club_router=require('./admin_pannel/routes/admin_club_router')
+const mentor_for_request_router=require('./mentor/routes/request_for_mentor_router')
+const admin_mentor_request_router=require('./admin_pannel/routes/admin_mentor_request')
+
+
 
 
 
@@ -47,7 +51,8 @@ app.use("/",admin_router)
 app.use("/",admin_user_router)
 app.use("/",admin_volunteer_router)
 app.use("/",admin_club_router)
-
+app.use("/",mentor_for_request_router)
+app.use("/",admin_mentor_request_router)
 
 // app.get('/new',function(req,res){
 //   if(req.session.page_views){
